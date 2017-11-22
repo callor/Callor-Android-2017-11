@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity
         txt_num2 = findViewById(R.id.txt_num2);
         txt_result = findViewById(R.id.txt_result);
 
+
         Button btn_plus = findViewById(R.id.btn_plus);
+        // 2. 각 버튼들의 OnClickListener(this)로 세팅
         btn_plus.setOnClickListener(this);
 
         Button btn_minus = findViewById(R.id.btn_minus);
