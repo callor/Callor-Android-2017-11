@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.callor.myapp.myapp003.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <!-- LinearLayout의 기본 orientation : horizontal -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="20sp"
+            android:text="email:"/>
+        <!-- 권장 단위는 dp -->
+        <!-- textSize의 경우는 sp 권장 -->
+        <!-- \n 줄바꿈 문자 ESC 문자 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:autoLink="email|web|phone"
+            android:textColorLink="#0400ff"
+            android:textSize="20sp"
+            android:text="callor@callor.com" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="20sp"
+            android:text="phone:"/>
+        <!-- 권장 단위는 dp -->
+        <!-- textSize의 경우는 sp 권장 -->
+        <!-- \n 줄바꿈 문자 ESC 문자 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:autoLink="email|web|phone"
+            android:textColorLink="#0400ff"
+            android:textColor="#FF0000"
+            android:textSize="20sp"
+            android:text="010-1234-5678"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- gravity : text 정렬 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="20sp"
+            android:text="homepage:"/>
+        <!-- 권장 단위는 dp -->
+        <!-- textSize의 경우는 sp 권장 -->
+        <!-- \n 줄바꿈 문자 ESC 문자 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:autoLink="email|web|phone"
+            android:textColorLink="#0400ff"
+            android:textColor="#FF0000"
+            android:textSize="20sp"
+            android:text="http://www.naver.com"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:text="우리나라 대한민국"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:text="Republic of Korea"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:text="우리나라"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#FF0000"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:text="Korea"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:gravity="right"
+            android:text="우리나라"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:text="Korea"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:gravity="right"
+            android:height="50dp"
+            android:text="우리나라"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:height="50dp"
+            android:text="Korea"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:gravity="right|center"
+            android:height="50dp"
+            android:text="우리나라"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:textSize="20sp"
+            android:textColor="#ffff00"
+            android:gravity="center"
+            android:height="50dp"
+            android:text="Korea"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

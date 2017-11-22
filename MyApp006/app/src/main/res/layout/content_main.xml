@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.callor.myapp.myapp006.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <!-- EditText -->
+    <!-- 새로운 입력박스 형태 -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+            입력박스의 제목처럼 힌트를 보여주고
+            입력박스를 클릭하면 작게 변화
+        -->
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txt_num1"
+            android:hint="첫번째 숫자를 입력하세요"
+            android:textSize="20sp"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+            입력박스의 제목처럼 힌트를 보여주고
+            입력박스를 클릭하면 작게 변화
+        -->
+
+        <!--
+            inputType : numberDecimal 로하면
+            숫자 입력박스가 여러개 있을때는
+            일일이 클릭하지 않아도 "다음"버튼을 눌러
+            다음번 입력 항목으로 이동할 수 있다.
+        -->
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txt_num2"
+            android:hint="두번째 숫자를 입력하세요"
+            android:textSize="20sp"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+            입력박스의 제목처럼 힌트를 보여주고
+            입력박스를 클릭하면 작게 변화
+        -->
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txt_result"
+            android:hint="결과가 표시됩니다."
+            android:textSize="20sp"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_plus"
+        android:background="#0000FF"
+        android:textColor="#FFF700"
+        android:textStyle="bold"
+        android:text="덧셈"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_minus"
+        android:background="#FF0000"
+        android:textColor="#FFF700"
+        android:textStyle="bold"
+        android:text="뺄셈"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_times"
+        android:background="#00FF00"
+        android:textColor="#FFF700"
+        android:textStyle="bold"
+        android:text="곱셈"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_div"
+        android:background="#000000"
+        android:textColor="#FFF700"
+        android:textStyle="bold"
+        android:text="나눗셈"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

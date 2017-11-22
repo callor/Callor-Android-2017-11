@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">내 어플</string>
+    <string name="title_home">처음</string>
+    <string name="title_dashboard">그래프</string>
+    <string name="title_notifications">알림</string>
+    <string name="title_camera">카메라</string>
+    <string name="title_map">지도</string>
+
+</resources>
