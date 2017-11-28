@@ -24,6 +24,7 @@
             android:id="@+id/txt_num1"
             android:hint="첫번째 숫자를 입력하세요"
             android:textSize="20sp"
+            android:padding="50dp"
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -100,6 +101,7 @@
         android:textStyle="bold"
         android:text="곱셈"
         android:textSize="20sp"
+        android:padding="30dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
