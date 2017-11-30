@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+   제목 표시줄을 제외한 영역을 위젯 배치로 사용하겠다.
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="16dp"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    tools:context="com.callor.lession.myapp008.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <!-- txt_view_01 : 다른 위젯의 기준 -->
+    <TextView
+        android:id="@+id/txt_view_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FF0000"
+        android:textSize="20sp"
+        android:layout_marginRight="5dp"
+        android:text="TextView 01" />
+
+    <TextView
+        android:id="@+id/txt_view_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0000FF"
+        android:textColor="#FFF700"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/txt_view_01"
+        android:layout_alignBottom="@id/txt_view_01"
+        android:text="toRightOf, alignBottom"/>
+
+    <!--
+        toRightOf : 상대 위젯의 오른쪽에 놓아라
+        alignBottom : 상대 위젝의 bottom을 맞추어라
+    -->
+    <TextView
+        android:id="@+id/txt_view_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FF00"
+        android:layout_toRightOf="@+id/txt_view_02"
+        android:layout_alignBottom="@id/txt_view_01"
+        android:text="03"/>
+
+    <!--
+        below : 상대위젯의 아래쪽에 위치하라
+        alignLeft : 상대 위젯과 왼쪽을 맞추어
+    -->
+
+    <TextView
+        android:id="@+id/txt_view_04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FF00"
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignLeft="@id/txt_view_01"
+        android:layout_below="@id/txt_view_01"
+        android:text="TextView 04"/>
+
+    <!--
+        alignBaseLine : 글자를 기준으로 글자 밑줄부분을 정렬
+     -->
+    <TextView
+        android:id="@+id/txt_view_05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FF0000"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/txt_view_04"
+        android:layout_alignBaseline="@id/txt_view_04"
+        android:text="alignBaseLine"/>
+
+
+    <!--
+        alignTop : 윗쪽을 기준으로 정렬
+    -->
+    <TextView
+        android:id="@+id/txt_view_06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FF00"
+        android:layout_toRightOf="@+id/txt_view_05"
+        android:layout_alignTop="@id/txt_view_04"
+        android:text="alignTop"/>
+
+    <TextView
+        android:id="@+id/txt_view_07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FF00"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/txt_view_04"
+        android:layout_centerHorizontal="true"
+        android:text="centerHorizontal"/>
+
+    <TextView
+        android:id="@+id/txt_view_08"
+        android:background="#FF0000"
+        android:padding="5dp"
+        android:layout_toLeftOf="@id/txt_view_07"
+        android:layout_alignBaseline="@id/txt_view_07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right"/>
+
+    <TextView
+        android:id="@+id/txt_view_09"
+        android:background="#0000FF"
+        android:padding="5dp"
+        android:textColor="#FFF700"
+        android:layout_toRightOf="@id/txt_view_07"
+        android:layout_alignBottom="@id/txt_view_07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left"/>
+
+
+    <TextView
+        android:id="@+id/txt_view_10"
+        android:padding="10dp"
+        android:background="#FFF700"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CenterHV"/>
+
+</RelativeLayout>
+
+
+
