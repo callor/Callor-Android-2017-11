@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    tools:context="com.callor.lession.myapp009.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <!--
+        gravity : 위젯 내부의 text를 정렬
+    -->
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#0000FF"
+        android:textColor="#FFF700"
+        android:textSize="30sp"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+
+        android:text="이미지 보기"/>
+
+    <Button
+        android:id="@+id/btn_prev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_title"
+        android:text="이전"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_title"
+        android:layout_toRightOf="@id/btn_prev"
+        android:text="다음"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_title"
+        android:layout_alignParentRight="true"
+        android:text="닫기"/>
+
+    <!-- 그림, 이미지를 표시하는 위젯 -->
+    <!--
+    android:layout_centerInParent="true" : 화면 중앙 정렬
+
+    android:layout_centerVertical="true"
+    android:layout_centerHorizontal="true"
+    -->
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="#4CAF50"
+        android:layout_centerInParent="true"
+        android:src="@drawable/image_2018"
+        />
+
+    <!--
+        src : 이미지를 불러오기
+        1MB >= 원본 > viewImge
+    -->
+
+    <Button
+        android:id="@+id/btn_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image"
+        android:layout_alignTop="@id/image"
+        android:layout_marginBottom="5dp"
+        android:text="1"/>
+
+    <Button
+        android:id="@+id/btn_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_01"
+        android:layout_alignLeft="@id/btn_01"
+        android:layout_marginBottom="5dp"
+
+        android:text="2"/>
+
+    <Button
+        android:id="@+id/btn_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_02"
+        android:layout_alignLeft="@id/btn_01"
+        android:text="3"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="보내기"/>
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
