@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.callor.lession.myapp10.Main2Activity">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_email_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txt_email"
+            android:hint="Email"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--
+    app:passwordToggleEnabled="true"
+        비번 입력 상자의 글자를 잠시 확인 할 수 있는 기능을 ON
+        눈 모양 아이콘을 클릭하면 토글
+    -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_password_layout"
+        android:layout_marginBottom="10dp"
+        android:hint="Password"
+        app:passwordToggleEnabled="true"
+        android:layout_below="@id/txt_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--
+            inputType="textPassword" : 문자, 숫자가 함께있는 비번 입력
+            inputType="numberPassword" : 숫자만 있는비번 입력
+            inputType="textPasswordVisible" : 화면에는 일반 문자로 보여주되, 입력한 기록을 남기지 않는다.
+
+        -->
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txt_password"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_below="@id/txt_password_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        android:text="로그인"/>
+
+    <!--
+      버튼에 입력된 text 는 항상 대문자로 표시된다.
+      대소문자를 함께 쓰고자 할때는 반드시 아래 옵션을 넣어야한다
+            android:textAllCaps="false"
+    -->
+    <Button
+        android:id="@+id/txt_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_login"
+        android:layout_marginBottom="10dp"
+        android:background="#4343c9"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:text="FaceBook으로 로그인"/>
+
+    <TextView
+        android:id="@+id/txt_or"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_facebook"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="또는"/>
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_below="@id/txt_or"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="회원가입"/>
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
