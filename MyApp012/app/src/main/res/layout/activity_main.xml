@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--
+    orientation : horizontal : 기본값, 가로방향
+            vertical : 세로방향으로 정렬,
+                rowCount 값이 주어져야 한다.
+
+-->
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="3"
+    android:rowCount="4"
+    android:orientation="horizontal"
+    tools:context="com.callor.lession.myapp012.MainActivity">
+
+
+    <!--
+        layout_graity : width가 가장 큰 셀을 기준으로
+            나머지 항목들을 정렬
+    -->
+    <Button android:text="1"
+        android:layout_width="50dp"
+        android:layout_gravity="right"/>
+
+    <Button android:text="2"/>
+
+    <!--
+        layout_gravity="fill"
+        셀에 가득 채워진 위젯 설정
+    -->
+    <Button android:text="3"
+        android:layout_gravity="fill"/>
+
+    <Button android:text="4"
+        android:layout_width="50dp"
+        android:layout_gravity="center"/>
+
+    <Button android:text="5"/>
+
+    <Button android:text="6"
+        android:layout_gravity="fill"/>
+    <Button android:text="7"/>
+    <Button android:text="8"/>
+    <Button android:text="9"
+        android:layout_rowSpan="2"
+        android:layout_gravity="fill"/>
+
+
+    <!--
+        columnSpan : 수평방향으로 셀을 병합해서 사용
+            gravity = "fill"
+        rowSpan : 수직방항으로 셀을 병합해서 사용
+    -->
+    <Button android:text="Enter"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill"/>
+
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+
+</GridLayout>
