@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context="com.callor.lession.myapp013.MainActivity">
+
+    <!--
+      Table Layout 시작
+      stretchColumns : 칼럼의 width를 늘리고, tablelayout을 parents에 맞춘다.
+    -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:stretchColumns="*">
+
+        <!--
+          Table내의 1개의 줄(row)
+        -->
+        <!--
+            column이 1개 뿐인 row
+            layout_span = 3
+                column이 1개 뿐이지만 3의 column을 한개로 통합해서 사용
+        -->
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:layout_span="3">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_result_1"
+                    android:background="#DED6D6"
+                    android:layout_width="match_parent"
+                    android:textSize="30sp"
+                    android:gravity="end"
+                    android:padding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="0"
+                    android:layout_height="match_parent" />
+
+            </android.support.design.widget.TextInputLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_span="4">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/txt_result"
+                    android:background="#DED6D6"
+                    android:layout_width="match_parent"
+                    android:textSize="30sp"
+                    android:gravity="end"
+                    android:padding="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="0"
+                    android:layout_height="match_parent" />
+
+            </android.support.design.widget.TextInputLayout>
+        </TableRow>
+        <!--
+            2번째 row에는 button이 3개 있어서
+            column이 3인 row 생성
+        -->
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="7"/>
+
+            <Button
+                android:id="@+id/btn_8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="8"/>
+
+            <Button
+                android:id="@+id/btn_9"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/btn_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="+" />
+
+
+        </TableRow>
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="4"/>
+
+            <Button
+                android:id="@+id/btn_5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="5"/>
+
+            <Button
+                android:id="@+id/btn_6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/btn_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="-" />
+
+        </TableRow>
+        <!--
+            TableLayout에는
+                Row는 고정되어 있지만
+                Column은 실제 가상으로 존재하는 값이어서
+                Row내부에 배치되는 widget의 width=0dp로 하고, weight값을 넣어주면
+                각 위젯의 width를 달리 배치할 수 있다.
+        -->
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="1"/>
+
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:text="2"/>
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:text="3" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="*" />
+
+        </TableRow>
+        <TableRow
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_0"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_span="2"
+                android:text="0"/>
+
+            <Button
+                android:id="@+id/btn_dot"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="."/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="/" />
+
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
