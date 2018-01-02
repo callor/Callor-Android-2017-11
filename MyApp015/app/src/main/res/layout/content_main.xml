@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.callor.lession.myapp015.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <!--
+        눈에 보이지 않는 투명한 라인을 설정하고
+        그 라인을 기준으로 위젯들을 배치할 수 있다.
+
+        app:layout_constraintGuide_begin : 시작하는 위치, left, top 위치를 지정한
+        app:layout_constraintGuide_end : 끝나는 위치 , Righth, Bottom 위치를 지정한다
+    -->
+    <android.support.constraint.Guideline
+        android:id="@+id/left_guide"
+        android:layout_width="wrap_content"
+        app:layout_constraintGuide_begin="50dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/top_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="100dp"
+        android:orientation="horizontal"/>
+
+    <Button
+        android:id="@+id/btn_a"
+        android:text="A"
+        android:textSize="20sp"
+
+        app:layout_constraintLeft_toLeftOf="@+id/left_guide"
+        app:layout_constraintTop_toTopOf="@+id/top_guide"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_b"
+        android:text="B"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toRightOf="@+id/btn_a"
+        app:layout_constraintTop_toTopOf="@+id/top_guide"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <!--
+        app:layout_goneMarginLeft="10dp"
+            코딩내에서 특정 위젯을 감추거나 보이고 싶을때
+            해당위젯 속의 GONE을 세팅하면, 해당 위젯은 감추어지고
+            goneMargin 설정된 위젯이 자리를 차지하게 된다.
+    -->
+    <Button
+        android:id="@+id/btn_c"
+        android:text="C"
+        android:textSize="20sp"
+
+        app:layout_constraintLeft_toRightOf="@+id/btn_b"
+        app:layout_constraintTop_toTopOf="@+id/top_guide"
+
+        app:layout_goneMarginLeft="10dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/txt_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:background="#0000FF"
+        android:textColor="#bfff00"
+
+        app:layout_constraintLeft_toRightOf="@+id/left_guide"
+
+        android:text="text1"/>
+
+    <!--
+        goneMarginLeft 위젯이 GONE(감추기)되었을때,
+        해당 위젯을 무시하고 여백을 자동 조정한다
+    -->
+    <TextView
+        android:id="@+id/txt_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:background="#FF0000"
+
+        android:layout_marginLeft="30dp"
+        app:layout_goneMarginLeft="0dp"
+
+        app:layout_constraintLeft_toRightOf="@+id/txt_01"
+
+        android:text="text2"/>
+
+
+</android.support.constraint.ConstraintLayout>
