@@ -44,12 +44,19 @@ public class AddrAdapter extends RecyclerView.Adapter{
                 .inflate(R.layout.layout,parent,false);
 
         AddrHolder holder = new AddrHolder(view);
-        return holder;
+        return holder; // return null  앱 오류가 발생해서 시작
 
     }
 
+    // 데이터와 holder를 서로 연결해주는 부분
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        AddrHolder addrHolder = (AddrHolder)holder; // holder를 형변환 시켜야 한다.
+
+//        addrHolder.imageView.setImageResource(items.get(position).getIntImage());
+        addrHolder.txt_name.setText(items.get(position).getStrName());
+        addrHolder.txt_remark.setText(items.get(position).getStrRemark());
 
     }
 
@@ -58,8 +65,9 @@ public class AddrAdapter extends RecyclerView.Adapter{
     // 5. getItemCount의 리턴값을 수정
     @Override
     public int getItemCount() {
-        return items.size();
-    }
+
+        return items.size(); // return 0  => 설정하지 않으면 list가 전혀 보이지 않는다.
+    } //
 
 
     class AddrHolder extends RecyclerView.ViewHolder {

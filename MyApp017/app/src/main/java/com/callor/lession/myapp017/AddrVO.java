@@ -9,6 +9,16 @@ public class AddrVO {
     private String strName = "";
     private String strRemark = "" ;
 
+    public AddrVO(){
+
+    }
+
+    public AddrVO(int intImage, String strName, String strRemark) {
+        this.intImage = intImage;
+        this.strName = strName;
+        this.strRemark = strRemark;
+    }
+
 
     public int getIntImage() {
         return intImage;
