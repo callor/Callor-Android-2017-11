@@ -41,7 +41,7 @@ public class AddrAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.layout,parent,false);
+                .inflate(R.layout.itemview,parent,false);
 
         AddrHolder holder = new AddrHolder(view);
         return holder; // return null  앱 오류가 발생해서 시작

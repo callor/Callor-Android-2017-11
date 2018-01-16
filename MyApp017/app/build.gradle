@@ -4,6 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.callor.lession.myapp017"
+        vectorDrawables.useSupportLibrary = true
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 1
