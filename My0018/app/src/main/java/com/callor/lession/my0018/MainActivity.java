@@ -1,5 +1,6 @@
 package com.callor.lession.my0018;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,8 +58,29 @@ public class MainActivity extends AppCompatActivity {
         final RecyclerView.Adapter adapter = new MemoAdapter(getApplicationContext(),memos);
         memo_list.setAdapter(adapter);
 
+        ItemTouchHelper.SimpleCallback simpleCallback
+                = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(memo_list);
+
+
+
         txt_memo = findViewById(R.id.txt_memo);
         Button btn_save = findViewById(R.id.btn_save);
+
+
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
