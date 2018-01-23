@@ -6,10 +6,10 @@ package com.callor.lession.todolist;
 
 public class MemoVO {
 
+    private long id ;
     private String strDate ;
     private String strTime ;
     private String strMemo ;
-
 
     public MemoVO() {
 
@@ -19,6 +19,17 @@ public class MemoVO {
         this.strDate = strDate;
         this.strTime = strTime;
         this.strMemo = strMemo;
+    }
+
+    public MemoVO(long id,String strDate, String strTime, String strMemo) {
+        this.id = id;
+        this.strDate = strDate;
+        this.strTime = strTime;
+        this.strMemo = strMemo;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getStrDate() {
