@@ -26,8 +26,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextInputEditText txt_memo ;
-    List<MemoVO> memos ; // = getMemos(); //new ArrayList<MemoVO>();
+    private TextInputEditText txt_memo ;
+    private List<MemoVO> memos ; // = getMemos(); //new ArrayList<MemoVO>();
+
+    // 1 Adapter를 생성하면서 데이터를 담을 VO list 를 넘겨주고
+    private RecyclerView.Adapter memoAdapter ;
+
+    private static final int NAVER_CLOVA = 0; // 내가 호출할 인텐트에 부여하는 고유  ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // 최초에 open할때 list 가져오기
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         memos = dbHelper.getAllList();
-
-
-        // 1 Adapter를 생성하면서 데이터를 담을 VO list 를 넘겨주고
-        final RecyclerView.Adapter memoAdapter = new MemoAdapter(memos);
+        memoAdapter = new MemoAdapter(memos);
 
         // 2. 리사클러의 레이아웃 매니저를 생성
         RecyclerView.LayoutManager memoLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -107,28 +109,11 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                     return ;
                 }
-
-                long now = System.currentTimeMillis();
-                Date date = new Date(now);
-
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
-                SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
-
-                String getDate = simpleDateFormat.format(date);
-                String getTime = simpleTimeFormat.format(date);
-
-                DBHelper dbHelper = new DBHelper(getApplicationContext());
-                MemoVO vo = new MemoVO(getDate,getTime,strMemo);
-
-                dbHelper.saveMemo(vo);
-//                memos = dbHelper.getAllList();
-                memos.add(new MemoVO(getDate,getTime,strMemo));
-                memoAdapter.notifyDataSetChanged();
+                saveData(strMemo);
                 txt_memo.setText("");
 
             }
         });
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -136,12 +121,48 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent naverClova = new Intent(MainActivity.this,NaverClova.class);
-                startActivity(naverClova);
+                startActivityForResult(naverClova,NAVER_CLOVA);
+                // 단순히 다른 Activiy를 여는 method
+                // startActivity(naverClova);
 
             }
         });
     }
 
+    // MainActivity에서 startActivityForResult로 호출한 Sub Acivity가 종료하면서
+    // 어떤 값을 Return 하면 그 값을 받을 method
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == NAVER_CLOVA) {
+            if(resultCode == RESULT_OK) {
+                String resultString = data.getExtras().getString("naver_result");
+                saveData(resultString);
+            }
+        }
+    }
+
+    public void saveData(String strmemo) {
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+        SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("HH:mm:ss");
+
+        String getDate = simpleDateFormat.format(date);
+        String getTime = simpleTimeFormat.format(date);
+
+        DBHelper dbHelper = new DBHelper(getApplicationContext());
+        MemoVO vo = new MemoVO(getDate,getTime,strmemo);
+
+        dbHelper.saveMemo(vo);
+
+        memos.add(new MemoVO(getDate,getTime,strmemo));
+        memoAdapter.notifyDataSetChanged();
+
+    }
 
     // 가상의 데이터를 생성해서 return
     public List<MemoVO> getMemos() {

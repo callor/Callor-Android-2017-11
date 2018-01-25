@@ -1,20 +1,25 @@
 package com.callor.lession.todolist;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Environment;
 import android.os.Message;
+import android.speech.SpeechRecognizer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.callor.lession.todolist.naver.AudioWriterPCM;
 import com.callor.lession.todolist.naver.Naver_Secret;
+import com.naver.speech.clientapi.SpeechRecognitionResult;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -38,40 +43,9 @@ public class NaverClova extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
 
-    private TextView mContentView;
-
-    private final Runnable mHidePart2Runnable = new Runnable() {
-        @SuppressLint("InlinedApi")
-        @Override
-        public void run() {
-            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        }
-    };
-
-    private final Runnable mShowPart2Runnable = new Runnable() {
-        @Override
-        public void run() {
-            // Delayed display of UI elements
-            ActionBar actionBar = getSupportActionBar();
-            if (actionBar != null) {
-                actionBar.show();
-            }
-        }
-    };
-
-    private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
-
+    // 기존의 mContentView를 btn_mic 이름변경
+    private ImageButton btn_mic;
+    private TextView txt_message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,19 +57,25 @@ public class NaverClova extends AppCompatActivity {
         handler = new RecogHandle(this);
         naverRecognizer = new NaverRecognizer(this,handler,CLIENT_ID);
 
-        mVisible = true;
 
-        mContentView = findViewById(R.id.fullscreen_content);
-        mContentView.setText("나를 터치하세요");
+        btn_mic = findViewById(R.id.btn_mic);
+        txt_message = findViewById(R.id.txt_message);
+        txt_message.setText("마이크를 터치하세요");
 
-        mContentView.setOnClickListener(new View.OnClickListener() {
+        btn_mic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             if(!naverRecognizer.getSpeechRecognizer().isRunning()) {
                 naverRecognizer.recognize();
             }
+            }
+        });
 
+        txt_message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                naverRecognizer.getSpeechRecognizer().stop();
             }
         });
     }
@@ -115,43 +95,14 @@ public class NaverClova extends AppCompatActivity {
         naverRecognizer.getSpeechRecognizer().release();
     }
 
-    // 화면이 그려지고 난 후 실행되는 자동메서드
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
-        // Trigger the initial hide() shortly after the activity has been
-        // created, to briefly hint to the user that UI controls
-        // are available.
-        delayedHide(100);
-    }
-
-
-    private void hide() {
-        // Hide UI first
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-        mVisible = false;
-
-        // Schedule a runnable to remove the status and navigation bar after a delay
-        mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
-    }
-
-    private void delayedHide(int delayMillis) {
-        mHideHandler.removeCallbacks(mHideRunnable);
-        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
-
-
+    // TODO : 네이버 리턴 메시지 처리
     private void handleMessage(Message msg){
 
         // naver가 보낸 메시지를 분석
         switch(msg.what) { // command
             case R.id.clientReady :// 음성인식을 할 준비가 되었다라는 command
-                mContentView.setText("말을 시작하세요");
+                // mContentView.setText("말을 시작하세요");
+                txt_message.setText("말을 시작하세요");
                 writer = new AudioWriterPCM(
                         Environment.getExternalStorageDirectory().getAbsolutePath()+"/naverSpech"
                 );
@@ -164,10 +115,30 @@ public class NaverClova extends AppCompatActivity {
 
             case R.id.partialResult: // 음성인식중
                 strResult = (String)msg.obj;
-                mContentView.setText(strResult);
+                txt_message.setText(strResult);
                 break;
 
             case R.id.finalResult: // 음성인식 완료
+                SpeechRecognitionResult speechRecognitionResult = (SpeechRecognitionResult) msg.obj;
+                List<String> results = speechRecognitionResult.getResults();
+
+                StringBuilder stringBuilder = new StringBuilder();
+
+                // String strResult = "";
+                for(String s : results) {
+                    stringBuilder.append(s);
+                    stringBuilder.append(("\n"));
+                }
+                txt_message.setText(stringBuilder.toString());
+
+                // naverClova를 호출한 메인에게 음성 인식 결과를 돌려준다.
+                Intent intent = new Intent(); // 나를 호출한 Activit의 정보를 가져온다.
+
+                intent.putExtra("naver_result",strResult);
+                setResult(RESULT_OK, intent); // 정상적으로 내 할일을 종료 했으니 알아서 하세요
+                // setResult(RESULT_CANCELED,intent);
+
+                this.finish();
                 break;
 
             case R.id.recognitionError: // 인식과정에서 오류가 발생

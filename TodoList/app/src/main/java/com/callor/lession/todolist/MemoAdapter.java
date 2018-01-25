@@ -18,6 +18,12 @@ public class MemoAdapter extends RecyclerView.Adapter{
     private List<MemoVO> memos = new ArrayList<MemoVO>();
 
 
+
+    // 데이터를 새로 추가한 다음에 Adapter에게 Loading 하는 부분
+    public void setData(List<MemoVO> memos) {
+        this.memos = memos;
+    }
+
     public MemoAdapter(List<MemoVO> memos) {
         this.memos = memos;
     }
