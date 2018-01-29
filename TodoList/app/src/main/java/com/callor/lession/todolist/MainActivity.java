@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         txt_memo = findViewById(R.id.txt_memo);
 
         // event 핸들러에서 접근할 변수앞에 final 키워드를 주어라
-
         final RecyclerView memo_list = findViewById(R.id.memo_list) ;
+        memo_list.requestFocus(); // app이 실행될때 recyclerview를 주목
 
 
         // 최초에 open할때 list 가져오기

@@ -67,7 +67,11 @@ public class NaverClova extends AppCompatActivity {
             public void onClick(View view) {
 
             if(!naverRecognizer.getSpeechRecognizer().isRunning()) {
+                txt_message.setText("클로버 연결중..");
+                strResult = "";
                 naverRecognizer.recognize();
+            } else {
+                naverRecognizer.getSpeechRecognizer().stop();
             }
             }
         });
