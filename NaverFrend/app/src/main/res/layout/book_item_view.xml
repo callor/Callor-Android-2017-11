@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view = "http://schemas.android.com/apk/res-auto"
+        android:id="@+id/book_item_card"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="5dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/book_item_title"
+                android:gravity="center|left"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--
+                    다수의 Image를 보여줄때
+                    전체적으로 통일성을 주기 위해
+                    width와 height를 강제로 크기를 지정한다.
+                -->
+                <!--
+                    scaleType
+                        fitXY : 박스에 이미지를 가득 채워라
+                        가로 세로 비율 무시
+                -->
+                <ImageView
+                    android:id="@+id/book_item_image"
+                    android:scaleType="fitXY"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp" />
+
+                <TextView
+                    android:id="@+id/book_item_desc"
+                    android:gravity="center|left"
+                    android:autoLink="web"
+                    android:linksClickable="true"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

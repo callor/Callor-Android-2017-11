@@ -16,8 +16,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:background="#3eec92">
 
         <android.support.design.widget.TextInputLayout
@@ -27,6 +27,7 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/txt_search"
+                android:drawableRight="@drawable/ic_mic_none_black_24dp"
                 android:hint="검색어를 입력한 후 버튼을 누르세요"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -44,14 +45,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_height="match_parent"
         android:background="#0077ff">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/search_list"
+            android:background="#00e6ff"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
