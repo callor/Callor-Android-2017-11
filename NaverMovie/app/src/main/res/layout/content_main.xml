@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:padding="16dp"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.callor.lession.navermovie.MainActivity"
     tools:showIn="@layout/activity_main">
@@ -25,8 +29,12 @@
             android:id="@+id/txt_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
+            android:drawableRight="@drawable/ic_mic_none_black_24dp"
+
             android:inputType="text"
             android:imeOptions="actionSearch"
+
             android:textSize="20sp" />
 
     </android.support.design.widget.TextInputLayout>

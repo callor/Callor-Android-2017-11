@@ -51,6 +51,8 @@
                     android:gravity="center|left"
                     android:autoLink="web"
                     android:linksClickable="true"
+                    android:maxLines="10"
+                    android:lines="10"
                     android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

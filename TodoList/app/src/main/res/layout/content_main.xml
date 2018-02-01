@@ -43,10 +43,9 @@
         </android.support.design.widget.TextInputLayout>
 
         <ImageButton
-            android:id="@+id/bt_save"
-            android:background="@mipmap/ic_launcher_round"
-            android:src="@drawable/ic_file_download_black_24dp"
-            android:layout_width="0dp"
+            android:id="@+id/btn_save"
+            android:background="@drawable/microphone"
+            android:layout_width="0do"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
 

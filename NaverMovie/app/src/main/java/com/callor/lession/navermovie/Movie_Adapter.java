@@ -22,6 +22,10 @@ public class Movie_Adapter extends RecyclerView.Adapter{
 
     List<MovieVO> movies ;
 
+    public Movie_Adapter(List<MovieVO> movies) {
+        this.movies = movies;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -51,9 +55,15 @@ public class Movie_Adapter extends RecyclerView.Adapter{
         movieHolder.txt_director.setText(getHTML(movies.get(position).getDirector()));
         movieHolder.txt_actor.setText(getHTML(movies.get(position).getActor()));
 
-        Picasso.with(movieHolder.itemView.getContext())
-                .load(movies.get(position).getImage()) // image link
-                .into(movieHolder.img_image);
+        try {
+            Picasso.with(movieHolder.itemView.getContext())
+                    .load(movies.get(position).getImage()) // image link
+                    .into(movieHolder.img_image);
+
+        } catch (Exception e ) {
+
+        }
+
     }
 
     @Override
