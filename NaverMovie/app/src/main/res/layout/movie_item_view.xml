@@ -80,18 +80,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
+                    <TextView
+                        android:id="@+id/movie_item_rating"
+
+                        android:maxLines="1"
+
+                        android:gravity="top|left"
+                        android:autoLink="web"
+                        android:linksClickable="true"
+
+                        android:padding="10dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
 
                 </LinearLayout>
-
-
             </LinearLayout>
-
-
         </LinearLayout>
-
-
-
-
     </android.support.v7.widget.CardView>
-
 </LinearLayout>

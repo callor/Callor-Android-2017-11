@@ -5,14 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.media.ToneGenerator;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.TextInputEditText;
@@ -21,9 +16,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.callor.lession.naverfrend.data.BookVO;
@@ -38,11 +34,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import static android.media.RingtoneManager.TYPE_RINGTONE;
 import static android.speech.tts.TextToSpeech.QUEUE_FLUSH;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
@@ -74,9 +68,28 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
         txt_search = findViewById(R.id.txt_search);
         recyclerView = findViewById(R.id.search_list);
-        ImageButton btn_search = findViewById(R.id.btn_search);
+        // ImageButton btn_search = findViewById(R.id.btn_search);
 
 
+        txt_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                String str_search = txt_search.getText().toString();
+                if (str_search.isEmpty()) {
+
+                    Toast
+                            .makeText(getApplicationContext(), "검색어를 입력하세요", Toast.LENGTH_SHORT)
+                            .show();
+
+                    return false;
+                }
+                NaverSearch naverSearch = new NaverSearch(str_search);
+                naverSearch.execute();
+                return true;
+            }
+        });
+
+        /*
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
             }
         });
+        */
 
         txt_search.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -157,8 +171,8 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         myTTS.setPitch(1.3f);
         myTTS.setSpeechRate(1f);
 
-        String strText1 = "안녕하세요 네이버 도서 정보입니다.";
-        String strText2 = "반갑습니다.";
+        String strText1 = ""; // 안녕하세요 네이버 도서 정보입니다.";
+        String strText2 = "" ; // 반갑습니다.";
 
         myTTS.speak(strText1, QUEUE_FLUSH, null, null);
         myTTS.speak(strText2, TextToSpeech.QUEUE_ADD, null, null);
@@ -231,6 +245,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "검색어를 말하세요");
 
         startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+
     }
 
     @Override

@@ -33,7 +33,6 @@ public class Movie_Adapter extends RecyclerView.Adapter{
         View view1 = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.movie_item_view,parent,false);
 
-
         // xml 파일을 펼치고
         LayoutInflater layoutInflater
                 = LayoutInflater.from(parent.getContext());
@@ -52,8 +51,25 @@ public class Movie_Adapter extends RecyclerView.Adapter{
         MovieHolder movieHolder = (MovieHolder)holder ;
 
         movieHolder.txt_title.setText(getHTML(movies.get(position).getTitle()));
-        movieHolder.txt_director.setText(getHTML(movies.get(position).getDirector()));
-        movieHolder.txt_actor.setText(getHTML(movies.get(position).getActor()));
+
+        String str_director = movies.get(position).getDirector();
+        str_director = "<b>감독 : </b>" + str_director;
+        movieHolder.txt_director.setText(getHTML(str_director));
+
+
+        String str_actor = movies.get(position).getActor();
+        str_actor = "<b>출연 : </b>" + str_actor;
+        movieHolder.txt_actor.setText(getHTML(str_actor));
+
+        int intRating = (int)(Float.valueOf(movies.get(position).getUserRating())/2);
+
+        String strRating = "";
+        for(int i = 0 ; i < intRating ; i++) {
+            strRating += "★ ";
+        }
+        strRating = "<b>평점</b> : <font color=blue>" + strRating + "</font></b>";
+        movieHolder.txt_rating.setText(getHTML(strRating));
+
 
         try {
             Picasso.with(movieHolder.itemView.getContext())
@@ -88,6 +104,7 @@ public class Movie_Adapter extends RecyclerView.Adapter{
         ImageView img_image ;
         TextView txt_director;
         TextView txt_actor ;
+        TextView txt_rating ;
 
         public MovieHolder(View itemView) {
 
@@ -95,6 +112,7 @@ public class Movie_Adapter extends RecyclerView.Adapter{
             txt_title = itemView.findViewById(R.id.movie_item_title);
             txt_director = itemView.findViewById(R.id.movie_item_director);
             txt_actor = itemView.findViewById(R.id.movie_item_actor);
+            txt_rating = itemView.findViewById(R.id.movie_item_rating);
 
             img_image = itemView.findViewById(R.id.movie_item_image);
 
